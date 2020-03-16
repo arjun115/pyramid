@@ -1,0 +1,49 @@
+{
+  "name": "pyramid-solitaire",
+  "version": "0.0.1",
+  "description": "card game",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon --watch src --exec \"npm run js:build && node server.js\"",
+    "js:build": "browserify -d src/index.js -o public/game.js -t [ babelify ]",
+    "js:shared": "browserify src/shared.js -o public/pyramid-shared.js -t [ babelify ] && npm run js:minify",
+    "js:minify": "node-minify --compressor uglify-js --input 'public/pyramid-shared.js' --output 'public/pyramid-shared.js'",
+    "test": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "puzzle",
+    "html5",
+    "phaser",
+    "game"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "phaser": "3.20.1",
+    "signals": "1.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.6.4",
+    "@babel/core": "7.6.4",
+    "@babel/plugin-proposal-class-properties": "7.5.5",
+    "@babel/preset-env": "^7.6.3",
+    "@node-minify/cli": "^5.2.1",
+    "@node-minify/uglify-js": "^5.2.1",
+    "babel-eslint": "10.0.3",
+    "babel-preset-minify": "0.5.1",
+    "babelify": "10.0.0",
+    "browserify": "16.5.0",
+    "core-js": "3.3.3",
+    "eslint": "6.5.1",
+    "express": "4.17.1",
+    "nodemon": "1.19.3"
+  }
+}
